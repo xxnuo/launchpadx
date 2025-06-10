@@ -17,6 +17,8 @@ struct ContentView: View {
     @FocusState private var isSearchFocused: Bool
     @State private var dragOffset: CGFloat = 0
     @State private var isDragging: Bool = false
+    @State private var dragStartTime: Date? = nil
+    @State private var dragVelocity: CGFloat = 0
 
     private var filteredIcons: [AppIcon] {
         if searchText.isEmpty {
@@ -138,26 +140,52 @@ struct ContentView: View {
                     .gesture(
                         DragGesture()
                             .onChanged { value in
+                                if dragStartTime == nil {
+                                    dragStartTime = Date()
+                                }
+
                                 isDragging = true
                                 dragOffset = value.translation.width
+
+                                // 计算拖动速度
+                                if let startTime = dragStartTime {
+                                    let timeElapsed = Date().timeIntervalSince(startTime)
+                                    if timeElapsed > 0 {
+                                        dragVelocity = CGFloat(
+                                            value.translation.width / CGFloat(timeElapsed))
+                                    }
+                                }
                             }
                             .onEnded { value in
                                 isDragging = false
                                 let threshold: CGFloat = 100
+                                let velocityThreshold: CGFloat = 500  // 速度阈值
 
-                                // 向右拖动超过阈值，切换到上一页
-                                if value.translation.width > threshold && currentPage > 0 {
-                                    currentPage -= 1
-                                }
-                                // 向左拖动超过阈值，切换到下一页
-                                else if value.translation.width < -threshold
+                                // 根据拖动距离或速度决定是否切换页面
+                                if (value.translation.width > threshold
+                                    || dragVelocity > velocityThreshold) && currentPage > 0
+                                {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                                        currentPage -= 1
+                                    }
+                                } else if (value.translation.width < -threshold
+                                    || dragVelocity < -velocityThreshold)
                                     && currentPage < totalPages - 1
                                 {
-                                    currentPage += 1
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                                        currentPage += 1
+                                    }
+                                } else {
+                                    // 如果没有切换页面，则回弹到原位置
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                                        dragOffset = 0
+                                    }
                                 }
 
-                                // 重置偏移量
+                                // 重置
                                 dragOffset = 0
+                                dragStartTime = nil
+                                dragVelocity = 0
                             }
                     )
                 }
@@ -195,7 +223,7 @@ struct ContentView: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         if currentPage > 0 {
-                            withAnimation {
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                                 currentPage -= 1
                             }
                         }
@@ -210,7 +238,7 @@ struct ContentView: View {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         if currentPage < totalPages - 1 {
-                            withAnimation {
+                            withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                                 currentPage += 1
                             }
                         }
@@ -283,7 +311,7 @@ struct ContentView: View {
             action: {
                 // 左箭头键切换到上一页
                 if currentPage > 0 {
-                    withAnimation {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                         currentPage -= 1
                     }
                 }
@@ -294,7 +322,7 @@ struct ContentView: View {
             action: {
                 // 右箭头键切换到下一页
                 if currentPage < totalPages - 1 {
-                    withAnimation {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                         currentPage += 1
                     }
                 }
