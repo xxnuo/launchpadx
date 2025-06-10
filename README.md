@@ -1,6 +1,8 @@
 # launchpadx
 
-Apple, give me back my launcher pad!
+Apple, give me back my launchpad!
+
+A open-source macOS launch pad, developed with SwiftUI and AppKit. Using the latest liquid glass effect.
 
 ## What is this?
 
