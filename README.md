@@ -4,6 +4,8 @@ Apple, give me back my launchpad!
 
 A open-source macOS launch pad, developed with SwiftUI and AppKit. Using the latest liquid glass effect.
 
+[中文](./README_zh.md)
+
 ## What is this?
 
 Today, I happily upgraded to the latest macOS system.
