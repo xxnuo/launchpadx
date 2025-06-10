@@ -18,12 +18,13 @@ Come back, my launcher pad!
 
 ![Launchpad](./images/launchpad.jpg)
 
+## Install
+
+Still under development! Star this repo to follow updates!
+```bash
+# brew install --cask launchpadx
+```
+
 ## Usage
 
 Run this program, get back your launcher pad!
-
-## Install
-
-```bash
-brew install --cask launchpadx
-```
