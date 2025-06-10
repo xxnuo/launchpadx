@@ -1,10 +1,21 @@
 import SwiftUI
+import AppKit
 
 struct AppIcon: Identifiable {
     let id = UUID()
     let name: String
     let iconName: String
     let color: Color
+    let appURL: URL?
+    let nsImage: NSImage?
+    
+    init(name: String, iconName: String, color: Color, appURL: URL? = nil, nsImage: NSImage? = nil) {
+        self.name = name
+        self.iconName = iconName
+        self.color = color
+        self.appURL = appURL
+        self.nsImage = nsImage
+    }
     
     static var sampleIcons: [AppIcon] = [
         AppIcon(name: "Safari", iconName: "safari", color: .blue),
