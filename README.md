@@ -2,7 +2,7 @@
 
 Apple, give me back my launchpad!
 
-A open-source macOS launch pad, developed with SwiftUI and AppKit. Using the latest liquid glass effect.
+A open-source macOS launchpad, developed with SwiftUI and AppKit. Using the latest liquid glass effect.
 
 [中文](./README_zh.md)
 
@@ -16,9 +16,9 @@ When I clicked the App button in the Dock, I was shocked to see that my launcher
 
 ![Spotlight](./images/spotlight.png)
 
-WTF? Why would Apple remove the launcher pad? The last time a company removed the start menu was when Windows 8 was killed.
+WTF? Why would Apple remove the launchpad? The last time a company removed the start menu was when Windows 8 was killed.
 
-Come back, my launcher pad!
+Come back, my launchpad!
 
 ![Launchpad](./images/launchpad.jpg)
 
@@ -31,4 +31,4 @@ Still under development! Star this repo to follow updates!
 
 ## Usage
 
-Run this program, get back your launcher pad!
+Run this program, get back your launchpad!
