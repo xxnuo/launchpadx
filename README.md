@@ -2,7 +2,7 @@
 
 Apple, give me back my launchpad!
 
-A open-source macOS launchpad, developed with SwiftUI and AppKit. Using the latest liquid glass effect.
+An open-source macOS launchpad, developed with SwiftUI and AppKit. Using the latest liquid glass effect.
 
 [中文](./README_zh.md)
 
