@@ -25,9 +25,6 @@ Come back, my launchpad!
 ## Install
 
 Still under development! Star this repo to follow updates!
-```bash
-# brew install --cask launchpadx
-```
 
 ## Usage
 
