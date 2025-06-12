@@ -1,3 +1,16 @@
+# 更新
+
+运行
+
+```bash
+sudo mkdir -p /Library/Preferences/FeatureFlags/Domain
+sudo defaults write /Library/Preferences/FeatureFlags/Domain/SpotlightUI.plist SpotlightPlus -dict Enabled -bool false
+```
+
+然后重启系统，熟悉的官方启动台回来了！
+
+所以本项目暂停更新！
+
 # launchpadx
 
 Apple, 把我的启动器还给我!
