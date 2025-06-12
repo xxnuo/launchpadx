@@ -1,3 +1,16 @@
+# News
+
+Run
+
+```bash
+sudo mkdir -p /Library/Preferences/FeatureFlags/Domain
+sudo defaults write /Library/Preferences/FeatureFlags/Domain/SpotlightUI.plist SpotlightPlus -dict Enabled -bool false
+```
+
+Then restart the system, and the familiar official launchpad is back!
+
+Therefore, this project is temporarily suspended from updates! You can use the official launchpad！
+
 # launchpadx
 
 Apple, give me back my launchpad!
